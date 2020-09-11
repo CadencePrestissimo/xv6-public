@@ -20,6 +20,30 @@ extern void trapret(void);
 
 static void wakeup1(void *chan);
 
+// pd implementation
+int
+cpd(int pid)
+{
+  struct proc *p;
+  const char *proc_state_str[] = {"UNUSED", "EMBRYO", "SLEEPING",
+                                  "RUNNABLE", "RUNNING", "ZOMBIE" };
+  acquire(&ptable.lock);
+  cprintf("PID\tNAME\tKILLED\tSIZE_P_M\tPPID\t\tSTAT\n");
+  int process_found = 0;
+  for (p = ptable.proc; p<&ptable.proc[NPROC]; p++){
+    if (p->pid == pid || pid==-1){
+      process_found = 1;
+      cprintf(" %d\t%s\t%d\t%d\t\t%d\t\t%s\n", p->pid, p->name, p->killed, p->sz,
+                                          p->parent->pid, proc_state_str[p->state]);
+    }
+  }
+  if (!process_found){
+    cprintf("No process with pid : %d was found\n", pid);
+  }
+  release(&ptable.lock);
+  return 0;
+}
+
 void
 pinit(void)
 {
