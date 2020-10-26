@@ -44,6 +44,21 @@ cpd(int pid)
   return 0;
 }
 
+int cgetNumProc()
+{
+	struct proc *p;
+	acquire(&ptable.lock);
+	int numProc = 0;
+	for (p = ptable.proc; p<&ptable.proc[NPROC]; p++){
+		if (p->state == EMBRYO || p->state == RUNNING || p->state == RUNNABLE || p->state == SLEEPING || p->state == ZOMBIE){
+			numProc++;
+		}
+	}
+	release(&ptable.lock);
+	// cprintf("%d\n", numProc);
+	return numProc;
+}
+
 void
 pinit(void)
 {
