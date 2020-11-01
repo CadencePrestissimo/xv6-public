@@ -5,7 +5,7 @@
 
 int
 main(int argc, char **argv){
-	int numProc = cgetNumProc();
-	printf(1, "%d\n", numProc);
+	int maxPid = getMaxPid();
+    printf(1, "%d\n", maxPid);
 	exit();
 }

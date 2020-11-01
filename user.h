@@ -25,6 +25,7 @@ int sleep(int);
 int uptime(void);
 int cpd(int);
 int cgetNumProc(void);
+int getMaxPid(void);
 
 // ulib.c
 int stat(const char*, struct stat*);

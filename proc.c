@@ -44,7 +44,8 @@ cpd(int pid)
   return 0;
 }
 
-int cgetNumProc()
+int
+cgetNumProc()
 {
 	struct proc *p;
 	acquire(&ptable.lock);
@@ -57,6 +58,24 @@ int cgetNumProc()
 	release(&ptable.lock);
 	// cprintf("%d\n", numProc);
 	return numProc;
+}
+
+int
+getMaxPid()
+{
+	struct proc *p;
+	acquire(&ptable.lock);
+	int maxPid = -1;
+  int currentPid;
+	for (p = ptable.proc; p<&ptable.proc[NPROC]; p++){
+    currentPid = p->pid;
+    if (currentPid > maxPid){
+      maxPid = currentPid;
+    }
+	}
+	release(&ptable.lock);
+	// cprintf("%d\n", maxPid);
+	return maxPid;
 }
 
 void

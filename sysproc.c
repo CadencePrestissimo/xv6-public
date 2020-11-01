@@ -8,6 +8,11 @@
 #include "proc.h"
 
 int
+sys_getMaxPid(void){
+  return getMaxPid();
+}
+
+int
 sys_cgetNumProc(void){
 	return cgetNumProc();
 }
