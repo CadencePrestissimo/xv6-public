@@ -9,6 +9,7 @@ struct spinlock;
 struct sleeplock;
 struct stat;
 struct superblock;
+struct processInfo;
 
 // bio.c
 void            binit(void);
@@ -123,6 +124,7 @@ void            yield(void);
 int             cpd(int);
 int 		    cgetNumProc(void);
 int             getMaxPid(void);
+int             getProcInfo(int, struct processInfo *);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

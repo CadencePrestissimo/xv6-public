@@ -6,6 +6,17 @@
 #include "memlayout.h"
 #include "mmu.h"
 #include "proc.h"
+#include "processInfo.h"
+
+int
+sys_getProcInfo(void){
+  int pid;
+  struct processInfo * procInfo;
+  if (argint(0, &pid)<0) return -1;
+  if (argptr(1, (void *)&procInfo, sizeof(*procInfo))<0) return -1;
+
+  return getProcInfo(pid, procInfo);
+}
 
 int
 sys_getMaxPid(void){

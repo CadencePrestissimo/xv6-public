@@ -23,3 +23,4 @@
 #define SYS_cpd    22
 #define SYS_cgetNumProc	23
 #define SYS_getMaxPid 24
+#define SYS_getProcInfo 25
