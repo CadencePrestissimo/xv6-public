@@ -107,6 +107,8 @@ extern int sys_cpd(void);
 extern int sys_cgetNumProc(void);
 extern int sys_getMaxPid(void);
 extern int sys_getProcInfo(void);
+extern int sys_setprio(void);
+extern int sys_getprio(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -134,6 +136,8 @@ static int (*syscalls[])(void) = {
 [SYS_cgetNumProc]	sys_cgetNumProc,
 [SYS_getMaxPid]   sys_getMaxPid,
 [SYS_getProcInfo] sys_getProcInfo,
+[SYS_setprio]  sys_setprio,
+[SYS_getprio]  sys_getprio,
 };
 
 void

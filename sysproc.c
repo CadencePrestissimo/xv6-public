@@ -9,6 +9,18 @@
 #include "processInfo.h"
 
 int
+sys_setprio(void){
+  int n;
+  if (argint(0, &n)<0) return -1;
+  return setprio(n);
+}
+
+int
+sys_getprio(void){
+  return getprio();
+}
+
+int
 sys_getProcInfo(void){
   int pid;
   struct processInfo * procInfo;

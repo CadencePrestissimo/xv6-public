@@ -22,6 +22,18 @@ extern void trapret(void);
 static void wakeup1(void *chan);
 
 int
+setprio(int n){
+  struct proc *p = myproc();
+  p->priority = n;
+  return 0;
+}
+
+int getprio(){
+  struct proc *p = myproc();
+  return p->priority;
+}
+
+int
 getProcInfo(int pid, struct processInfo * procInfo)
 {
   struct proc *p;

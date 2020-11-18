@@ -19,6 +19,11 @@ int main(void)
       if(c == 0)  
         printf(1, "%d\t%d\t%d\t%d\n", pid, info.ppid, info.psize, info.numberContextSwitches);
   }
-
+  
+  for(int i=1; i<10; i++){
+        setprio(i);
+        printf(1, "Priority : %d\n", getprio());
+    }
+    
   exit();
 }

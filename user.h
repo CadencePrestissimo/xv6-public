@@ -28,6 +28,8 @@ int cpd(int);
 int cgetNumProc(void);
 int getMaxPid(void);
 int getProcInfo(int, struct processInfo *);
+int setprio(int);
+int getprio();
 
 // ulib.c
 int stat(const char*, struct stat*);
